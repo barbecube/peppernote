@@ -52,9 +52,6 @@ cursor_positions:
   - :path: app/views/notes/_form.html.erb
     :cursor_offset: 89
     :timestamp: 2012-04-05 12:33:27 +02:00
-  - :path: app/views/notes/show.html.erb
-    :cursor_offset: 145
-    :timestamp: 2012-04-05 13:49:32 +02:00
   - :path: app/models/note.rb
     :cursor_offset: 260
     :timestamp: 2012-04-11 13:13:51 +02:00
@@ -85,7 +82,13 @@ cursor_positions:
   - :path: app/views/pages/home.html.erb
     :cursor_offset: 0
     :timestamp: 2012-03-29 14:17:33 +02:00
+  - :path: .gitignore
+    :cursor_offset: 430
+    :timestamp: 2012-03-28 20:36:17 +02:00
   - :path: app/views/notes/new.html.erb
     :cursor_offset: 39
     :timestamp: 2012-04-03 19:38:58 +02:00
+  - :path: app/views/notes/show.html.erb
+    :cursor_offset: 145
+    :timestamp: 2012-04-05 13:49:32 +02:00
 files_to_retain: 0

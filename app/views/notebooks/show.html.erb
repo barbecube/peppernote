@@ -1,0 +1,8 @@
+<h1><%= @notebook.name %></h1>
+<% @notes.each do |note| %>
+  <li>
+    <%= link_to note.title, note_path(note.id) %>
+  </li>
+<% end %>
+
+<%= link_to "New note", new_note_path(:notebook_id => @notebook.id) %>

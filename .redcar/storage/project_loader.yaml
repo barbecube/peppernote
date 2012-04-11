@@ -1,0 +1,29 @@
+--- 
+open_files: 
+  - app/views/notes/edit.html.erb
+  - app/views/notes/_form.html.erb
+  - app/views/notes/show.html.erb
+  - app/views/notes/new.html.erb
+  - app/controllers/notes_controller.rb
+  - app/views/pages/home.html.erb
+  - app/views/layouts/application.html.erb
+  - app/models/notebook.rb
+  - app/views/notebooks/_form.html.erb
+  - app/views/notebooks/show.html.erb
+  - app/controllers/notebooks_controller.rb
+  - 1/app/models/note.rb
+  - 1/app/helpers/users_helper.rb
+  - 1/app/helpers/sessions_helper.rb
+  - 1/app/controllers/notes_controller.rb
+  - 1/app/views/notes/new.html.erb
+  - 1/db/migrate/20120202230022_create_notes.rb
+  - 1/app/views/notebooks/index.html.erb
+  - 1/app/views/notes/edit.html.erb
+  - 1/app/assets/javascripts/notes.js
+  - 1/app/assets/javascripts/application.js
+  - 1/app/assets/javascripts/notebooks.js
+  - 1/app/views/notebooks/edit.html.erb
+  - 1/app/views/notes/show.html.erb
+  - 1/app/views/users/show.html.erb
+  - 1/config/routes.rb
+  - 1/app/views/notebooks/new.html.erb

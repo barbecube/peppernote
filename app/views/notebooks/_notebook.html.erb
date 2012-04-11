@@ -1,0 +1,6 @@
+<li>
+  <%= link_to notebook.name, '#' %> | 
+  <%= link_to "edit", edit_notebook_path(notebook) %> | 
+  <%= link_to "delete", notebook, :method => :delete, :confirm =>  "You sure?",
+                                  :title => "Delete #{notebook.name}" %>                                 
+</li>

@@ -1,0 +1,17 @@
+<%= form_for(@note) do |f|%>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title%>
+  </div>
+  <div class="area">
+    <%= f.label :content %><br />
+    <%= f.text_area :content%>
+  </div>
+  <div>
+  <%= hidden_field_tag(:notebook_id, params[:notebook_id]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

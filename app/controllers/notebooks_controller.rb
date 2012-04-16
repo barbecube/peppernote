@@ -11,8 +11,7 @@ class NotebooksController < ApplicationController
   end
   
   def create
-  	@notebook = current_user.notebooks.build(params[:notebook])
-    
+  	@notebook = current_user.notebooks.build(params[:notebook])    
     if @notebook.save
       respond_to do |format|
         format.html {
@@ -39,6 +38,7 @@ class NotebooksController < ApplicationController
 
   def edit
   	@title = "Edit notebook"
+    is_from_ajax()
   end
 
   def update
@@ -70,6 +70,7 @@ class NotebooksController < ApplicationController
   def new
   	@notebook = Notebook.new
   	@title = "New Notebook"
+    is_from_ajax()
   end
 
   def show
@@ -87,5 +88,5 @@ class NotebooksController < ApplicationController
     def authorized_user
       @notebook = Notebook.find(params[:id])
       redirect_to notebooks_path unless (current_user == @notebook.user)
-    end
+    end    
 end

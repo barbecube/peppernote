@@ -11,19 +11,24 @@ class NotesController < ApplicationController
   end
   
   def create
-    @note = current_user.notebooks.find_by_id(params[:notebook_id]).notes.build(params[:note])
-    if @note.save
-      respond_to do |format|
-        format.html {
-          flash[:success] = "Note saved successfully!"
-          redirect_to notebook_path(params[:notebook_id]) }
-        format.json {render :json => @note }        
-      end      
-    else
-      @tile = "New Note"
-      respond_to do |format|
-        format.html { render 'new' }
-        format.json {render :json => @note.errors }
+    @notes = current_user.notebooks.find(params[:notebook_id]).notes
+    @note = @notes.build(params[:note])
+    if @notes.find_by_title(@note.title) 
+      alert("fail")
+    else    
+      if @note.save
+        respond_to do |format|
+          format.html {
+            flash[:success] = "Note saved successfully!"
+            redirect_to notebook_path(params[:notebook_id]) }
+          format.json {render :json => @note }        
+        end      
+      else
+        @tile = "New Note"
+        respond_to do |format|
+          format.html { render 'new' }
+          format.json {render :json => @note.errors }
+        end
       end
     end
   end
@@ -40,6 +45,7 @@ class NotesController < ApplicationController
   def edit
     @title = "Edit note"
     @notebook = Note.find(params[:id]).notebook
+    is_from_ajax()
   end
 
   def update
@@ -77,22 +83,29 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    @title = "New Note"
+    @title = "New Note"    
     if params.key?(:notebook_id)
-      @notebook = current_user.notebooks.find_by_id(params[:notebook_id])
+      @notebook = current_user.notebooks.find(params[:notebook_id])
+      is_from_ajax()
     else
       flash[:error] = "Undefined notebook_id: Must be called from notebook"
-      redirect_to root_path
+      redirect_to notebooks_path
     end
 
   end
 
   def show
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:id])    
 #    @notebook = @note.notebook
-    @title = @note.title
+    @title = @note.title    
     respond_to do |format|
-      format.html
+      format.html {
+        if params[:from] == "ajax"
+          render :action => "show", :layout => "for_ajax"
+        else
+          render :action => "show", :layout => "application"
+        end
+      }
       format.json { render :json => @note }
     end
   end
@@ -105,5 +118,4 @@ class NotesController < ApplicationController
         redirect_to root_path unless (current_user == @note.notebook.user)
       end
     end
-
 end

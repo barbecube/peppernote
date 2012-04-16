@@ -1,0 +1,20 @@
+<header>    	
+	<% if user_signed_in? %>
+		<%= link_to logo, notebooks_path %>
+	<% else %>
+		<%= link_to logo, root_path %>
+	<% end %>
+	<nav>
+	  <ul>	  	 
+	    <% if user_signed_in? %>	      
+	      <i>Signed as: <%= current_user.email %></i>
+	      <li><%= link_to "Notebooks", notebooks_path %></li>
+	      <li><%= link_to "Settings", edit_user_registration_path %></li>
+	      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	    <% else %>
+	      <li><%= link_to "Home", root_path%></li>
+	      <li><%= link_to "Sign in", new_user_session_path %></li>
+	    <% end %>
+	  </ul>
+	</nav>
+</header>

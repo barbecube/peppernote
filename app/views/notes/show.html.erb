@@ -2,5 +2,7 @@
 <p>
   <%= @note.content %>
 </p>
-<%= link_to "Edit", edit_note_path(@note) %>
-<%= link_to "Delete", @note, :confirm => 'Are you sure?', :method => :delete %>
+<% if params[:from] != "ajax" %>
+  <%= link_to "Edit", edit_note_path(@note) %>
+  <%= link_to "Delete", @note, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>

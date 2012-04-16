@@ -1,3 +1,34 @@
+<div class="span-4 notebooks red_border">
+	<h2>Notebooks</h2>
+  <div id="nb_menu" name="nb_menu">
+    <button id="add_nb" name="add_nb" >Add</button>
+    <button id="edit_nb" name="edit_nb" disabled="disabled">Edit</button>
+    <button id="delete_nb" name="delete_nb"disabled="disabled">Delete</button>
+  </div>
+  <ul id="nb_list" name="nb_list">
+    <% current_user.notebooks.each do |nb| %>
+      <li nb_id="<%= nb.id %>" >
+          <%= nb.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="span-4 notes red_border">
+	<h2>Notes</h2>
+  <div id="notes_menu" name="notes_menu">
+    <button id="add_note" name="add_note" disabled="disabled">Add</button>
+    <button id="edit_note" name="edit_note" disabled="disabled">Edit</button>
+    <button id="delete_note" name="delete_note" disabled="disabled">Delete</button>
+  </div>
+  <ul id="notes_list" name="notes_list">
+  </ul>
+</div>
+
+<div id="show_page" name="show_page" class="span-16 show_page red_border">
+</div>
+
+<!--
 <%= link_to "New notebook", new_notebook_path %>
 
 <% current_user.notebooks.each do |notebook| %>
@@ -10,3 +41,4 @@
     </li>
   <% end %>
 <% end %>
+-->

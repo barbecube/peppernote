@@ -1,0 +1,179 @@
+.container {
+  background: #C00000;
+	align:center;
+}
+
+body{
+	background: #FFF;
+	margin-bottom: none;
+}
+
+header {
+  background: #C00000;
+  font-size: 120%;
+}
+
+header nav {
+	position: relative;
+}
+
+section {
+	padding-left: 10px;
+	font-size: 120%;
+	background: #FFF;
+}
+
+section h1 {
+	font-size: 200%;
+}
+
+/* Links */
+
+a {
+	color:#006600;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+a:hover {
+	color:#009900;
+}
+
+a.registration_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #fff;
+  background: #006600;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+/* Navigation */
+
+nav {
+	float: right;
+	white-space: nowrap;
+	padding-bottom: 0px;
+}
+
+nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 3px 3px 3px 3px;
+	background: #FFF;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+    -webkit-border-radius-bottomright: 10px;
+    -webkit-border-radius-bottomleft: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+nav ul i {
+	color: #FFF;
+	padding-right: 20px;
+}
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: #c00;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul {
+  color: #333;
+  padding-top: 10px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+input {
+	font-size:120%;
+}
+
+div.links a{
+	font-size:100%;
+}
+
+div.notebooks {
+	background: #FFF;
+}
+
+div h2 {
+	padding: 3px;
+	margin-bottom:-7px;
+}
+
+div.notebooks ul {
+	padding: 3px 3px 3px 3px;
+}
+
+div.notebooks ul li {
+	list-style-type: none;
+}
+
+div.notebooks ul li:hover {
+	background-color: green;
+	color: white;
+}
+
+div.notes {
+	background: #FFF;
+}
+
+div.notes ul {
+	padding: 3px 3px 3px 3px;
+}
+
+div.notes ul li {
+	list-style-type: none;
+}
+
+div.notes ul li:hover {
+	background-color: green;
+	color: white;
+}
+
+div.show_page {
+  background: #FFF;
+}
+
+.selected{
+  background-color: #C00000;
+  color: white;
+}
+
+.red_border {
+  border-style:solid;
+  border-width:5px;
+  border-color:#C00000;
+}

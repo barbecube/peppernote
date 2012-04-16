@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
 
+gem 'pg'
+
 gem 'devise'
 
 gem 'json'

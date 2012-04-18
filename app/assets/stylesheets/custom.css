@@ -5,8 +5,11 @@ html {
   position: relative;
   width:1280px;
   min-height:100%;
-  background: #C00000; 
-  text-align:center; 
+  background: #C00000;  
+}
+
+.center {
+    text-align:center;
 }
 
 body{

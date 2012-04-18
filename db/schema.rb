@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403152413) do
+ActiveRecord::Schema.define(:version => 20120418075327) do
 
   create_table "notebooks", :force => true do |t|
     t.string   "name"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120403152413) do
 
   create_table "notes", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content",     :limit => 255
     t.integer  "notebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"

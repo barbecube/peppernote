@@ -11,13 +11,5 @@ module ApplicationHelper
 	else
 	  "#{base_title} | #{@title}"
 	end
-  end
-
-  def is_from_ajax      
-    if params[:from] == "ajax"
-      render :layout => "for_ajax"
-    else
-      render :layout => "application"
-    end    
-  end
+  end  
 end

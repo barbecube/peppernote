@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 	function refresh_notes_list(nb_id) {
 		$.get("/notebooks/" + nb_id + ".json", function(result){
-			populate_with_json(result);
+			
 		}, 'text');
 		$("#show_page").html("<h1>Note list refreshed</h1>");		
 	}

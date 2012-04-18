@@ -15,14 +15,18 @@ class NotebooksController < ApplicationController
     if @notebook.save
       respond_to do |format|
         format.html {
-          flash[:success] = "Notebook created!"
-          redirect_to notebooks_path }
+          if params[:from] == "ajax"
+              render :nothing => true
+          else
+            flash[:success] = "Notebook updated."
+          redirect_to notebooks_path
+          end }
         format.json { render :json => @notebook }
       end
     else
       @title = "New Notebook"
       respond_to do |format|
-        format.html { render 'notebooks/new' }
+        format.html { is_from_ajax_render('notebooks/new') }
         format.json { render :json => @notebook.errors }
       end
     end  	
@@ -45,14 +49,18 @@ class NotebooksController < ApplicationController
     if @notebook.update_attributes(params[:notebook])
    	  respond_to do |format|
         format.html {
-          flash[:success] = "Notebook updated."
-     	    redirect_to notebooks_path }
+          if params[:from] == "ajax"
+              render :nothing => true
+          else
+            flash[:success] = "Notebook updated."
+          redirect_to notebooks_path
+          end }          
         format.json { render :json => @notebook }
       end
    	else
    	  @title = "Edit notebook"
       respond_to do |format|
-        format.html { render 'edit' }
+        format.html { is_from_ajax_render('edit') }
         format.json { render :json => @notebook.errors }        
       end   	  
    	end

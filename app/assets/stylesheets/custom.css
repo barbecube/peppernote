@@ -1,10 +1,17 @@
+html {
+  height:100%;
+}
 .container {
-  background: #C00000;
-	align:center;
+  position: relative;
+  width:1280px;
+  min-height:100%;
+  background: #C00000;  
 }
 
 body{
-	background: #FFF;
+  margin:0 auto;
+  height:100%;
+	background: #F0F0F0 ;
 	margin-bottom: none;
 }
 
@@ -14,7 +21,16 @@ header {
 }
 
 header nav {
-	position: relative;
+	position: absolute;
+  top:0;
+  right:0;
+}
+
+footer nav {
+  position: absolute;
+  bottom:0;
+  right:0;
+  margin-bottom:-20px;
 }
 
 section {
@@ -64,16 +80,38 @@ nav ul li {
 	display: inline-block;
 	padding: 3px 3px 3px 3px;
 	background: #FFF;
-	-moz-border-radius-bottomright: 10px;
-	-moz-border-radius-bottomleft: 10px;
-    -webkit-border-radius-bottomright: 10px;
-    -webkit-border-radius-bottomleft: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
 }
 nav ul i {
 	color: #FFF;
 	padding-right: 20px;
+}
+
+header nav ul li {
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-radius-bottomright: 10px;
+  -webkit-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+footer nav ul li {
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-radius-topright: 10px;
+  -webkit-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.round {
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-radius-bottomright: 10px;
+  -webkit-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  
 }
 
 .field_with_errors {
@@ -91,8 +129,8 @@ nav ul i {
   width: 400px;
   border: 2px solid red;
   padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   background-color: #f0f0f0;
 }
 
@@ -101,7 +139,7 @@ nav ul i {
   font-weight: bold;
   padding: 5px 5px 5px 15px;
   font-size: 12px;
-  margin: -7px;
+  margin: 7px;
   background-color: #c00;
   color: #fff;
 }
@@ -126,6 +164,8 @@ div.links a{
 
 div.notebooks {
 	background: #FFF;
+  overflow: auto;
+  padding: 5px;
 }
 
 div h2 {
@@ -147,7 +187,9 @@ div.notebooks ul li:hover {
 }
 
 div.notes {
+  overflow: auto;
 	background: #FFF;
+  padding: 5px;
 }
 
 div.notes ul {
@@ -164,7 +206,10 @@ div.notes ul li:hover {
 }
 
 div.show_page {
+  position: static;
   background: #FFF;
+  overflow: auto;
+  padding: 5px;
 }
 
 .selected{
@@ -174,6 +219,12 @@ div.show_page {
 
 .red_border {
   border-style:solid;
-  border-width:5px;
+  border-width:0px;
   border-color:#C00000;
+}
+
+textarea {
+  padding: 5px;
+  width:98%;
+  resize: none;
 }

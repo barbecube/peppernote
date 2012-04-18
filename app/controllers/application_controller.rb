@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
       render :layout => "application"
     end    
   end
+
+  def is_from_ajax_render(action)
+    if params[:from] == "ajax"
+      render action, :layout => "for_ajax"
+    else
+      render action, :layout => "application"
+    end  
+  end
 end

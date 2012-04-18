@@ -19,14 +19,18 @@ class NotesController < ApplicationController
       if @note.save
         respond_to do |format|
           format.html {
-            flash[:success] = "Note saved successfully!"
-            redirect_to notebook_path(params[:notebook_id]) }
+            if params[:from] == "ajax"
+              render :nothing => true
+            else
+              flash[:success] = "Note saved successfully!"
+              redirect_to notebook_path(params[:notebook_id])
+            end }            
           format.json {render :json => @note }        
         end      
       else
         @tile = "New Note"
         respond_to do |format|
-          format.html { render 'new' }
+          format.html { is_from_ajax_render('new') }
           format.json {render :json => @note.errors }
         end
       end
@@ -53,14 +57,18 @@ class NotesController < ApplicationController
     if @note.update_attributes(params[:note])  
       respond_to do |format|
         format.html {
-          flash[:success] = "Note updated."
-          redirect_to note_path(@note.id) }
+          if params[:from] == "ajax"
+            render :nothing => true
+          else
+            flash[:success] = "Note updated."
+            redirect_to note_path(@note.id)
+          end }          
         format.json { render :json => @note }
       end
     else
       @title = "Edit note"
       respond_to do |format|
-        format.html { render 'edit' }
+        format.html { is_from_ajax_render('edit') }
         format.json { render :json => @note.errors }
       end
     end
@@ -100,11 +108,7 @@ class NotesController < ApplicationController
     @title = @note.title    
     respond_to do |format|
       format.html {
-        if params[:from] == "ajax"
-          render :action => "show", :layout => "for_ajax"
-        else
-          render :action => "show", :layout => "application"
-        end
+        is_from_ajax_render("show")
       }
       format.json { render :json => @note }
     end
@@ -117,5 +121,5 @@ class NotesController < ApplicationController
       if @note
         redirect_to root_path unless (current_user == @note.notebook.user)
       end
-    end
+    end    
 end

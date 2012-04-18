@@ -6,6 +6,7 @@ $(document).ready(function(){
 		$(elem).addClass("selected");
 		$("#show_page").empty();
 		enable_nb_menu();
+		disable_notes_menu();
 		refresh_notes_list(nb_id);
 	});
 
@@ -64,11 +65,11 @@ $(document).ready(function(){
 		}
 	});
 
-	function refresh_notes_list(nb_id, callback) {
+	function refresh_notes_list(nb_id) {
 		$.get("/notebooks/" + nb_id + ".json", function(result){
 			populate_with_json(result);
 		}, 'text');
-		callback();
+		$("#show_page").html("<h1>Note list refreshed</h1>");		
 	}
 
     function populate_with_json(json){
@@ -93,6 +94,11 @@ $(document).ready(function(){
 		$("#delete_note").removeAttr("disabled");		
 	}
 
+	function disable_notes_menu() {
+		$("#edit_note").attr("disabled", "disabled");
+		$("#delete_note").attr("disabled",  "disabled");			
+	}
+
 	function selected_nb_id(){
 		return $("#nb_list li.selected").attr("nb_id");
 	} 
@@ -100,11 +106,7 @@ $(document).ready(function(){
 	$(function() {
 	  $("#show_page form[data-update-target]").live('ajax:success', function(evt, data) {
 	  	var nb_id = selected_nb_id();
-	    refresh_notes_list(nb_id, function(){
-	    	var note = $("#notes_list li").firstChild;
-    		note.addClass("selected");    	
-    		$("#show_page").load("/notes/" + $(note).attr("note_id") , { from : ajax } );		
-	    });    	
+	    refresh_notes_list(nb_id);    	
 	  });
 	});
 });

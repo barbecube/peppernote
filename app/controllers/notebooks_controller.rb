@@ -33,10 +33,16 @@ class NotebooksController < ApplicationController
   end
 
   def destroy
-	  @notebook.destroy
-    respond_to do |format|
-  	  format.html { redirect_to notebooks_path }
-      format.json { render :json => @notebook }
+    if params.key?(:version) && @notebook.version > params[:version].to_i
+      respond_to do |format|
+        format.json { render :json => @notebook }
+      end
+    else
+      @notebook.destroy
+      respond_to do |format|
+    	  format.html { redirect_to notebooks_path }
+        format.json { render :json => @notebook }
+      end
     end
   end
 
@@ -46,24 +52,32 @@ class NotebooksController < ApplicationController
   end
 
   def update
-    if @notebook.update_attributes(params[:notebook])
-   	  respond_to do |format|
-        format.html {
-          if params[:from] == "ajax"
-              render :nothing => true
-          else
-            flash[:success] = "Notebook updated."
-          redirect_to notebooks_path
-          end }          
+    if params.key?(:version) && @notebook.version > params[:version].to_i
+      respond_to do |format|
         format.json { render :json => @notebook }
       end
-   	else
-   	  @title = "Edit notebook"
-      respond_to do |format|
-        format.html { is_from_ajax_render('edit') }
-        format.json { render :json => @notebook.errors }        
-      end   	  
-   	end
+    else  
+      if @notebook.update_attributes(params[:notebook])
+        @notebook.version += 1
+        @notebook.save
+        respond_to do |format|
+          format.html {
+            if params[:from] == "ajax"
+                render :nothing => true
+            else
+              flash[:success] = "Notebook updated."
+            redirect_to notebooks_path
+            end }          
+          format.json { render :json => @notebook }
+        end
+     	else
+     	  @title = "Edit notebook"
+        respond_to do |format|
+          format.html { is_from_ajax_render('edit') }
+          format.json { render :json => @notebook.errors }        
+        end   	  
+     	end
+    end
   end
 
   def index

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418075327) do
+ActiveRecord::Schema.define(:version => 20120419231435) do
 
   create_table "notebooks", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "version",    :default => 1
   end
 
   add_index "notebooks", ["user_id"], :name => "index_notebooks_on_user_id"
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20120418075327) do
     t.integer  "notebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "version",                    :default => 1
   end
 
   add_index "notes", ["notebook_id"], :name => "index_notes_on_notebook_id"

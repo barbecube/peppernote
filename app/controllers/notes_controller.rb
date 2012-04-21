@@ -39,11 +39,17 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
-    @note.destroy
-    respond_to do |format|
-      format.html { redirect_to notebook_path(params[:notebook_id]) }
-      format.json { render :json => @note }
-    end    
+    if params.key?(:version) && @note.version > params[:version].to_i
+      respond_to do |format|
+        format.json { render :json => @note }
+      end
+    else
+      @note.destroy
+      respond_to do |format|
+        format.html { redirect_to notebook_path(params[:notebook_id]) }
+        format.json { render :json => @note }
+      end 
+    end   
   end
 
   def edit
@@ -54,7 +60,14 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    if @note.update_attributes(params[:note])  
+    @new_note = params[:note]
+    if params.key?(:version) && @note.version > params[:version].to_i
+      merged_content = "#{@note.content}\n\nSynchronization conflict, updating with older version:\n\n#{@new_note['content']}"
+      @new_note["content"] = merged_content
+    end
+    if @note.update_attributes(@new_note)
+      @note.version += 1
+      @note.save  
       respond_to do |format|
         format.html {
           if params[:from] == "ajax"
@@ -73,21 +86,6 @@ class NotesController < ApplicationController
       end
     end
   end
-
-#  def index
-#    @title = "Notes"
-#  end
-  
-#  def notes_menu
-#    @title = "Notes menu"
-
-#  end
-
-#  def notes_list
-#    @title = "Notes list"
-#    @notebook = current_user.notebooks.find_by_id(params[:nb_id])
-
-#  end
 
   def new
     @note = Note.new

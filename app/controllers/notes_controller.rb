@@ -14,7 +14,11 @@ class NotesController < ApplicationController
     @notes = current_user.notebooks.find(params[:notebook_id]).notes
     @note = @notes.build(params[:note])
     if @notes.find_by_title(@note.title) 
-      alert("fail")
+      @note.errors.add(:title, " has already been taken")
+      respond_to do |format|
+        format.html { is_from_ajax_render('new') }
+        format.json {render :json => @note.errors }
+      end
     else    
       if @note.save
         respond_to do |format|
@@ -58,13 +62,24 @@ class NotesController < ApplicationController
     is_from_ajax()
   end
 
-  def update
+  def update    
     @note = Note.find(params[:id])
+    @notes = current_user.notebooks.find(@note.notebook_id).notes
     @new_note = params[:note]
+    if @notes.find_by_title(@new_note['title']) 
+      @note.errors.add(:title, " has already been taken")
+      respond_to do |format|
+        format.html { is_from_ajax_render('new') }
+        format.json {render :json => @note.errors }
+      end
+      return
+    end
+    
     if params.key?(:version) && @note.version > params[:version].to_i
       merged_content = "#{@note.content}\n\nSynchronization conflict, updating with older version:\n\n#{@new_note['content']}"
       @new_note["content"] = merged_content
-    end
+    end 
+    
     if @note.update_attributes(@new_note)
       @note.version += 1
       @note.save  

@@ -66,7 +66,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @notes = current_user.notebooks.find(@note.notebook_id).notes
     @new_note = params[:note]
-    if @notes.find_by_title(@new_note['title']) 
+    if @note.title != @new_note['title'] && @notes.find_by_title(@new_note['title']) 
       @note.errors.add(:title, " has already been taken")
       respond_to do |format|
         format.html { is_from_ajax_render('new') }

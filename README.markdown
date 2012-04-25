@@ -1,6 +1,5 @@
 # Peppernote
 
-##Introduction
 Peppernote is an opensource project for creating and synchronizing notes over various platforms.
 Project should consist of Web server application and client applications for various platforms.
 Current Web server is implemented in Rails and provides REST API for client-server communication.

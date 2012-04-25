@@ -27,7 +27,7 @@ class NotebooksController < ApplicationController
       @title = "New Notebook"
       respond_to do |format|
         format.html { is_from_ajax_render('notebooks/new') }
-        format.json { render :json => @notebook.errors }
+        format.json { render :status=>400, :json => @notebook.errors }
       end
     end  	
   end

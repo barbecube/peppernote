@@ -61,7 +61,7 @@ Peppernote::Application.configure do
   config.to_prepare { Devise::SessionsController.force_ssl }
   config.to_prepare { Devise::RegistrationsController.force_ssl }
 
-  config.action_mailer.default_url_options = { :host => 'herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'peppernote.herokuapp.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp

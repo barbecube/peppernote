@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 
 group :development do
+	gem 'rails-erd'
 	gem 'sqlite3'
 	gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
 end

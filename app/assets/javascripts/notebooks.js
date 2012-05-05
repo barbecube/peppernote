@@ -102,6 +102,10 @@ $(document).ready(function(){
 		$("#notes_list").html(new_list);
     }
 
+    function clear_notes_list(){
+    	$("#notes_list li").remove();
+    }
+
     function refresh_notebooks_list(callback){
     	$.ajaxSetup({async:false});
     	$.get("/notebooks.json", function(result){
@@ -179,6 +183,7 @@ $(document).ready(function(){
 	  					$("#nb_list li:first").addClass("selected");
 	  					enable_nb_menu();
 	  					disable_notes_menu();
+	  					clear_notes_list();
 	  					$("#show_page").children().remove();
 	  				}
 	  			});

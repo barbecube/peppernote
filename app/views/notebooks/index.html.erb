@@ -27,18 +27,3 @@
 
 <div id="show_page" name="show_page" class="span-20 show_page red_border round">
 </div>
-
-<!--
-<%= link_to "New notebook", new_notebook_path %>
-
-<% current_user.notebooks.each do |notebook| %>
-  <% unless notebook.id.nil? %>
-    <li>
-      <%= link_to notebook.name, notebook_path(notebook) %> | 
-      <%= link_to "edit", edit_notebook_path(notebook) %> | 
-      <%= link_to "delete", notebook, :method => :delete, :confirm =>  "You sure?",
-                                      :title => "Delete #{notebook.name}" %>                                 
-    </li>
-  <% end %>
-<% end %>
--->

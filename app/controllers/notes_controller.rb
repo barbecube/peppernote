@@ -17,7 +17,7 @@ class NotesController < ApplicationController
       @note.errors.add(:title, " has already been taken")
       respond_to do |format|
         format.html { is_from_ajax_render('new') }
-        format.json {render :status=>400 :json => @note.errors }
+        format.json {render :status=>400, :json => @note.errors }
       end
     else    
       if @note.save
@@ -35,7 +35,7 @@ class NotesController < ApplicationController
         @tile = "New Note"
         respond_to do |format|
           format.html { is_from_ajax_render('new') }
-          format.json {render :status=>400 :json => @note.errors }
+          format.json {render :status=>400, :json => @note.errors }
         end
       end
     end
@@ -70,7 +70,7 @@ class NotesController < ApplicationController
       @note.errors.add(:title, " has already been taken")
       respond_to do |format|
         format.html { is_from_ajax_render('new') }
-        format.json {render :status=>400 :json => @note.errors }
+        format.json {render :status=>400, :json => @note.errors }
       end
       return
     end
@@ -97,7 +97,7 @@ class NotesController < ApplicationController
       @title = "Edit note"
       respond_to do |format|
         format.html { is_from_ajax_render('edit') }
-        format.json { render :status=>400 :json => @note.errors }
+        format.json { render :status=>400, :json => @note.errors }
       end
     end
   end

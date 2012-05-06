@@ -74,7 +74,7 @@ class NotebooksController < ApplicationController
      	  @title = "Edit notebook"
         respond_to do |format|
           format.html { is_from_ajax_render('edit') }
-          format.json { render :status=>400 :json => @notebook.errors }        
+          format.json { render :status=>400, :json => @notebook.errors }        
         end   	  
      	end
     end

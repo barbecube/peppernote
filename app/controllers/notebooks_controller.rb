@@ -35,7 +35,7 @@ class NotebooksController < ApplicationController
   def destroy
     if params.key?(:version) && @notebook.version > params[:version].to_i
       respond_to do |format|
-        format.json { render :json => @notebook }
+        format.json { render :status=>409, :json => @notebook }
       end
     else
       @notebook.destroy
@@ -54,7 +54,7 @@ class NotebooksController < ApplicationController
   def update
     if params.key?(:version) && @notebook.version > params[:version].to_i
       respond_to do |format|
-        format.json { render :json => @notebook }
+        format.json { render :status=>409, :json => @notebook }
       end
     else  
       if @notebook.update_attributes(params[:notebook])
@@ -74,7 +74,7 @@ class NotebooksController < ApplicationController
      	  @title = "Edit notebook"
         respond_to do |format|
           format.html { is_from_ajax_render('edit') }
-          format.json { render :json => @notebook.errors }        
+          format.json { render :status=>400 :json => @notebook.errors }        
         end   	  
      	end
     end

@@ -14,7 +14,7 @@ Peppernote came out of an idea to create fully opensource note synchronizing too
 Project should be an alternative to current proprietary tools. It is being developed as my bachelor's thesis.   
 
 ##License
-Peppernote web server is released under GPLv2 license.
+GPLv2 license
 
 ###Author
 Jakub Barbierik  

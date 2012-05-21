@@ -6,7 +6,7 @@ Current Web server is implemented in Rails and provides REST API for client-serv
 
 ##Current state
 Web application is curently running on Heroku: https://peppernote.herokuapp.com  
-Android application is being developed and should be available soon.  
+Android application: https://github.com/barbecube/peppernote_android
 REST API Documentation is coming soon.  
 
 ##Inspiration
